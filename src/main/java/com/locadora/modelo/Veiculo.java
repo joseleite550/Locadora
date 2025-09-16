@@ -3,6 +3,7 @@ package com.locadora.modelo;
 import com.locadora.interfaces.IVeiculo;
 
 public class Veiculo implements IVeiculo{
+	private int id;
     private String cor;
     private String modelo;
     private String marca;
@@ -12,9 +13,16 @@ public class Veiculo implements IVeiculo{
     private double valor = 10;
     private double seguro;
     private boolean isDisponivel;
-
     
-    @Override
+    public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	@Override
     public double getValorDiaria() {
        return valor;
     }

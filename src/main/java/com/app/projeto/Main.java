@@ -1,10 +1,10 @@
 package com.app.projeto;
 
+import java.util.Scanner;
+
 import com.locadora.fabrica.VeiculoFactory;
-import com.locadora.modelo.Carro;
 import com.locadora.modelo.Locadora;
 import com.locadora.modelo.Veiculo;
-import java.util.Scanner;
 
 /**
  *
@@ -13,29 +13,27 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-//        Locadora loc = new Locadora();
+    	  Locadora loc = new Locadora();
           Scanner sc = new Scanner(System.in);
-//        System.out.println("Bem vindo ao sistema");
-//        System.out.println("Informe os dados da locadora");
-//        
-//        System.out.println("Informe a razão social");
-//        String razao = sc.nextLine();
-//        loc.setRazaoSocial(razao);
-//        
-//        System.out.println("Informe o nome fantasia");
-//        String fantasia = sc.nextLine();
-//        loc.setNomeFantasia(fantasia);
-//      
-//        System.out.println("Informe o cnpj");
-//        String cnpj = sc.nextLine();
-//        loc.setRazaoSocial(cnpj);
+          loc.exibirVeiculos();
+          System.out.println("Digite 1 para carro e 2 para moto para iniciar o cadastro");
 
+          Veiculo veic = VeiculoFactory.getVeiculo(2);
 
-          System.out.println("Digite 1 para carro e 2 para moto");
-          int escolha = sc.nextInt();
-          Veiculo veic = VeiculoFactory.getVeiculo(escolha);
+          veic.setId(1234);
+          veic.setModelo("teste 1");
+          loc.cadastrarVeiculo(veic);
+          loc.exibirVeiculos();
           
-          System.out.println(veic.getValorDiaria());
-//       
+          Veiculo veic2 = VeiculoFactory.getVeiculo(2);
+          veic2.setId(123456);
+          veic2.setModelo("teste 2");
+          loc.exibirVeiculos();
+          loc.cadastrarVeiculo(veic2);
+          loc.exibirVeiculos();
+          
+          loc.removerVeiculo(1234);
+          
+          loc.exibirVeiculos();
     }
 }

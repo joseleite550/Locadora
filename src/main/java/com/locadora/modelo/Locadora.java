@@ -1,5 +1,8 @@
 package com.locadora.modelo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Locadora {
     //* razao social cnpj nome fantasia funcionarios clientes carros *//
     /* gerenciar aluguel carros, gerenciar funcionarios, verificar clientes */
@@ -7,7 +10,8 @@ public class Locadora {
     private String nomeFantasia;
     private String cnpj;
     private Localizacao localizacao;
-
+    private List<Veiculo> veiculos = new ArrayList<Veiculo>();
+    
     public String getRazaoSocial() {
         return razaoSocial;
     }
@@ -38,6 +42,31 @@ public class Locadora {
 
     public void setLocalizacao(Localizacao localizacao) {
         this.localizacao = localizacao;
+    }
+    
+    public void exibirVeiculos() {
+    	System.out.println("Veiculos da locadora "+nomeFantasia);
+    	for(Veiculo v:veiculos) {
+    		System.out.println(v.getModelo());
+    	}
+    	if(veiculos.isEmpty())
+    		System.out.println("Sem veiculos cadastrados");
+    }
+    
+    public void removerVeiculo(int id) {
+    	int index =0;
+    	for(Veiculo v:veiculos) {
+    		if(v.getId() == id) {
+    			System.out.println("removendo veiculo de id " + id);
+    			veiculos.remove(index);
+    			break;
+    		}
+    		index++;
+    	}
+    }
+    
+    public void cadastrarVeiculo(Veiculo veiculo) {
+    	veiculos.add(veiculo);
     }
     
 }
